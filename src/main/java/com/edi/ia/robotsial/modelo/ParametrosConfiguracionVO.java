@@ -34,7 +34,7 @@ public  ParametrosConfiguracionVO() {
 
 
 	public String getPathArchivo() {
-		return pathArchivo.replaceAll("/", fileSeparator);
+		return pathArchivo;
 	}
 
 
@@ -47,7 +47,7 @@ public  ParametrosConfiguracionVO() {
 
 
 	public String getPathArchivoCarga() {
-		return pathArchivoCarga.replaceAll("/", fileSeparator);
+		return pathArchivoCarga;
 	}
 
 
@@ -59,7 +59,7 @@ public  ParametrosConfiguracionVO() {
 
 
 	public String getPathArchivoRespuesta() {
-		return pathArchivoRespuesta.replaceAll("/", fileSeparator);
+		return pathArchivoRespuesta;
 	}
 
 
@@ -90,7 +90,7 @@ public  ParametrosConfiguracionVO() {
 
 
 	public String getPathWebDriver() {
-		return pathWebDriver.replaceAll("/", fileSeparator);
+		return pathWebDriver;
 	}
 
 

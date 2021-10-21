@@ -1,0 +1,12 @@
+Resultado carga;Cliente;Credito;Mensaje Error
+FALLIDO;sial@cardmin.com.mx;206065650;element not interactable
+  (Session info: chrome=95.0.4638.54)
+Build info: version: '4.0.0-rc-2', revision: '8d1e4aa5ae'
+System info: host: 'BR', ip: '10.34.87.3', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [4bd33e17086be77dad16f59879202315, clickElement {id=ece226f7-40c7-485a-9f48-9e399a8981e6}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 95.0.4638.54, chrome: {chromedriverVersion: 95.0.4638.17 (a9d0719444d4b..., userDataDir: C:\Users\beima\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:49933}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:49933/devtoo..., se:cdpVersion: 95.0.4638.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (4bd33e17086be77dad16f59879202315)] -> xpath: /html/body/div[1]/div[3]/div/div/div[1]/div/div/div/div[1]/div/a]
+Session ID: 4bd33e17086be77dad16f59879202315
+FALLIDO;sial@cardmin.com.mx;206065650;Ya existe un dictamen de vivienda
+FALLIDO;sial@cardmin.com.mx;206108007;Ya existe un dictamen de vivienda

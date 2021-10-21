@@ -20,14 +20,13 @@ public class Principal {
 		ControladorRobotSial controladorRobotSial = new ControladorRobotSial();
 		
 		Utilidad utilidad = new Utilidad();
-		ParametrosConfiguracionVO parametrosConfiguracionVO = utilidad.leerConfiguracion(VariablesGlobales.RUTA_PARAMETROS_CONFIGURACION.replaceAll("/", System.getProperty("file.separator")));
-		
+		ParametrosConfiguracionVO parametrosConfiguracionVO = utilidad.leerConfiguracion(VariablesGlobales.RUTA_PARAMETROS_CONFIGURACION);
 		Date date = new Date();
 		DateFormat formateadorFechaMedia = DateFormat.getDateInstance(DateFormat.MEDIUM);
 		
-		DateFormat formateadorHoraMedia = DateFormat.getTimeInstance(DateFormat.MEDIUM);
+//		DateFormat formateadorHoraMedia = DateFormat.getTimeInstance(DateFormat.MEDIUM);
 		
-		String pathArchivoResultado = parametrosConfiguracionVO.getPathArchivoRespuesta() + formateadorFechaMedia.format(date)+" "+formateadorHoraMedia.format(date) + " Resultado.csv";
+		String pathArchivoResultado = parametrosConfiguracionVO.getPathArchivoRespuesta() + formateadorFechaMedia.format(date)+" "+ date.getTime() + " Resultado.csv";
 		
 		utilidad.crearArchivoResultado(pathArchivoResultado);
 		Respuesta respuesta = new Respuesta();
