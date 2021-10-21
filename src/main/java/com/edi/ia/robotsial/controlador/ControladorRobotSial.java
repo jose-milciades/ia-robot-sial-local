@@ -14,6 +14,7 @@ import com.edi.ia.robotsial.modelo.ExpedientesVO;
 import com.edi.ia.robotsial.modelo.ParametrosConfiguracionVO;
 import com.edi.ia.robotsial.modelo.ReciboVO;
 import com.edi.ia.robotsial.modelo.RecibosVO;
+import com.edi.ia.robotsial.modelo.Respuesta;
 import com.edi.ia.robotsial.modelo.RespuestaCargaSialVO;
 import com.edi.ia.robotsial.util.Utilidad;
 import com.edi.ia.robotsial.util.VariablesGlobales;
@@ -56,11 +57,11 @@ public class ControladorRobotSial  {
 		}
 	}
 
-	public void cargarExpediente(ExpedientesVO expedientesVO) throws Exception {
+	public void cargarExpediente(ExpedientesVO expedientesVO, ParametrosConfiguracionVO parametrosConfiguracionVO,  String pathArchivoResultado) throws Exception {
 
 		String rutaArchivo = "";
 		RobotSial robotSial = null;
-		ParametrosConfiguracionVO parametrosConfiguracionVO = utilidad.leerConfiguracion(VariablesGlobales.RUTA_PARAMETROS_CONFIGURACION);
+		Respuesta respuesta = new Respuesta();
 
 		try {
 			
@@ -92,6 +93,12 @@ public class ControladorRobotSial  {
 					} 
 					utilidad.borrarDirectorio(rutaArchivo);
 
+					respuesta.setCuentaSial(parametrosConfiguracionVO.getLogin());
+					respuesta.setMensajeError("");
+					respuesta.setNumeroCredito(expedienteVO.getNumeroCredito());
+					respuesta.setResultado(VariablesGlobales.RESPUESTA_EXITOSA);
+					utilidad.agregarLineaResultado(respuesta.getRespuesta(), pathArchivoResultado);
+					
 					RespuestaCargaSialVO respuestaCargaSialVO = new RespuestaCargaSialVO();
 					respuestaCargaSialVO.setIdCargaDemanda(expedienteVO.getIdCargaDemanda());
 					respuestaCargaSialVO.setIdExpediente(expedienteVO.getIdExpediente());
@@ -103,12 +110,26 @@ public class ControladorRobotSial  {
 				catch (IOException e) {
 					e.printStackTrace();
 					utilidad.borrarDirectorio(rutaArchivo);
+					
+					respuesta.setCuentaSial(parametrosConfiguracionVO.getLogin());
+					respuesta.setMensajeError(VariablesGlobales.MENSAJE_ERROR_07 + e.getMessage());
+					respuesta.setNumeroCredito(expedienteVO.getNumeroCredito());
+					respuesta.setResultado(VariablesGlobales.RESPUESTA_FALLIDA);
+					utilidad.agregarLineaResultado(respuesta.getRespuesta(), pathArchivoResultado);
+					
 					this.registrarError(expedienteVO, VariablesGlobales.CODIGO_ERROR_07,
 							VariablesGlobales.MENSAJE_ERROR_07 + e.getMessage());
 
 				} catch (Exception e) {
 					e.printStackTrace();
 					utilidad.borrarDirectorio(rutaArchivo);
+					
+					respuesta.setCuentaSial(parametrosConfiguracionVO.getLogin());
+					respuesta.setMensajeError(e.getMessage());
+					respuesta.setNumeroCredito(expedienteVO.getNumeroCredito());
+					respuesta.setResultado(VariablesGlobales.RESPUESTA_FALLIDA);
+					utilidad.agregarLineaResultado(respuesta.getRespuesta(), pathArchivoResultado);
+					
 					this.registrarError(expedienteVO, VariablesGlobales.CODIGO_ERROR_03, e.getMessage());
 
 				}
@@ -117,6 +138,13 @@ public class ControladorRobotSial  {
 			e.printStackTrace();
 			for (ExpedienteVO expedienteVO : expedientesVO.getExpedientes()) {
 				e.printStackTrace();
+				
+				respuesta.setCuentaSial(parametrosConfiguracionVO.getLogin());
+				respuesta.setMensajeError(VariablesGlobales.MENSAJE_ERROR_06 + e.getMessage());
+				respuesta.setNumeroCredito(expedienteVO.getNumeroCredito());
+				respuesta.setResultado(VariablesGlobales.RESPUESTA_FALLIDA);
+				utilidad.agregarLineaResultado(respuesta.getRespuesta(), pathArchivoResultado);
+				
 				this.registrarError(expedienteVO, VariablesGlobales.CODIGO_ERROR_06,
 						VariablesGlobales.MENSAJE_ERROR_06 + e.getMessage());
 			}

@@ -8,8 +8,67 @@ public class ParametrosConfiguracionVO {
 	public  String urlSial;
 	public  String login;
 	public  String password;
+	public  String pathArchivoCarga;
+	public  String pathArchivoRespuesta;
+	public  String fileSeparator;
 	
+public  ParametrosConfiguracionVO() {
+		this.fileSeparator = System.getProperty("file.separator");
+		
+	}
 	
+	public String getFileSeparator() {
+		return fileSeparator;
+	}
+
+
+
+	public void setFileSeparator(String fileSeparator) {
+		this.fileSeparator = fileSeparator;
+	}
+
+
+
+	
+
+
+
+	public String getPathArchivo() {
+		return pathArchivo.replaceAll("/", fileSeparator);
+	}
+
+
+
+	public void setPathArchivo(String pathArchivo) {
+		
+		this.pathArchivo = pathArchivo;
+	}
+
+
+
+	public String getPathArchivoCarga() {
+		return pathArchivoCarga.replaceAll("/", fileSeparator);
+	}
+
+
+
+	public void setPathArchivoCarga(String pathArchivoCarga) {
+		this.pathArchivoCarga = pathArchivoCarga;
+	}
+
+
+
+	public String getPathArchivoRespuesta() {
+		return pathArchivoRespuesta.replaceAll("/", fileSeparator);
+	}
+
+
+
+	public void setPathArchivoRespuesta(String pathArchivoRespuesta) {
+		this.pathArchivoRespuesta = pathArchivoRespuesta;
+	}
+
+
 
 	public String getUrlSial() {
 		return urlSial;
@@ -29,20 +88,9 @@ public class ParametrosConfiguracionVO {
 
 
 
-	public String getPathArchivo() {
-		return pathArchivo;
-	}
-
-
-
-	public void setPathArchivo(String pathArchivo) {
-		this.pathArchivo = pathArchivo;
-	}
-
-
 
 	public String getPathWebDriver() {
-		return pathWebDriver;
+		return pathWebDriver.replaceAll("/", fileSeparator);
 	}
 
 

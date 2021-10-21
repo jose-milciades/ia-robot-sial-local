@@ -2,6 +2,7 @@ package com.edi.ia.robotsial.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -29,7 +30,7 @@ public class Utilidad {
 		URL url = new URL(origenURL);
 		Path path = new File(rutaDirectorio + File.separator + nombreArchivo).toPath();
 		Files.copy(url.openStream(), path, StandardCopyOption.REPLACE_EXISTING);
-		File file = new File(rutaDirectorio + "/" + nombreArchivo);
+		File file = new File(rutaDirectorio + nombreArchivo);
 		return file.getAbsolutePath();
 	}
 
@@ -87,17 +88,18 @@ public ParametrosConfiguracionVO leerConfiguracion(String ruta) throws IOExcepti
 		return parametrosConfiguracionVO;
 	}
 
-public ExpedientesVO leerExpedientes(String ruta) throws Exception {
-	ExpedientesVO expedientesVO = new ExpedientesVO();
-	expedientesVO.setTipoCarga("dictamenVivienda");
+public ArrayList<ExpedienteVO> leerExpedientes(String ruta) throws Exception {
+	
 	ArrayList<ExpedienteVO> listExpedienteVO = new ArrayList<ExpedienteVO>();
-	expedientesVO.setExpedientes(listExpedienteVO);
+	
 	
 	try (Stream<String> stream = Files.lines(Paths.get(ruta))) {
 		Iterator<String> lineas = stream.iterator();
 		String linea[];
-		//linea de encabezado
+		
 		if(lineas.hasNext()) {
+			//linea de encabezado
+			lineas.next();
 		while (lineas.hasNext()) {
 			ExpedienteVO expedienteVO = new ExpedienteVO();
 			linea = lineas.next().toString().split(";");
@@ -119,8 +121,8 @@ public ExpedientesVO leerExpedientes(String ruta) throws Exception {
 				expedienteVO.setCapacidadDePago(linea[14]);
 
 				expedienteVO.setComentario(linea[15]);
-				expedienteVO.setLatitud(linea[16]);
-				expedienteVO.setLongitud(linea[17]);
+				expedienteVO.setLatitud(linea[16].replace(",", "."));
+				expedienteVO.setLongitud(linea[17].replace(",", "."));
 				
 				listExpedienteVO.add(expedienteVO);
 		}
@@ -128,10 +130,10 @@ public ExpedientesVO leerExpedientes(String ruta) throws Exception {
 	} catch (ArrayIndexOutOfBoundsException e) {
 		throw new Exception(e.getMessage());
 	}
-	return expedientesVO;
+	return listExpedienteVO;
 }
 
-public void crerarArchivoResultado(String ruta) throws IOException {
+public void crearArchivoResultado(String ruta) throws IOException {
 	Path path = Paths.get(ruta);
 	try (BufferedWriter br = Files.newBufferedWriter(path, Charset.defaultCharset(), StandardOpenOption.CREATE)) {
 	}
@@ -139,9 +141,11 @@ public void crerarArchivoResultado(String ruta) throws IOException {
 
 public void agregarLineaResultado(String linea, String ruta) throws Exception {
 	Path path = Paths.get(ruta);
-	try (BufferedWriter br = Files.newBufferedWriter(path, Charset.defaultCharset(), StandardOpenOption.WRITE)) {
+	//new BufferedWriter(new FileWriter(my_file_name, true));
+	try (BufferedWriter br = Files.newBufferedWriter(path, Charset.defaultCharset(), StandardOpenOption.APPEND)) {
+	//try (BufferedWriter br = BufferedWriter(new FileWriter(ruta, true))){
 			try {
-				br.write(linea);
+				br.append(linea);
 				br.newLine();
 			} catch (IOException e) {
 				throw new Exception(e.getMessage());

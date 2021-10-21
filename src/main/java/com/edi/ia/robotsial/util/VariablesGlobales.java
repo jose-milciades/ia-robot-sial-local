@@ -27,7 +27,7 @@ public class VariablesGlobales {
 	public static String CODIGO_ERROR_08 = "ERROR_08";
 	public static String MENSAJE_ERROR_08 = "Georrefencia no corresponde a Mexico: ";
 	public static String CODIGO_ERROR_09 = "ERROR_09";
-	public static String MENSAJE_ERROR_09 = "Existe dictamen de vivienda previo";
+	public static String MENSAJE_ERROR_09 = "Ya existe un dictamen de vivienda";
 	public static String END_POINT = "robotSial/cargarExpediente";
 	public static String PROCESO_TERMINADO_CARGA_SIAL = "carga_sial";
 	public static String TIPO_CARGA_DICTAMEN_VIVIENDA = "dictamenVivienda";
@@ -36,6 +36,8 @@ public class VariablesGlobales {
 	public static BigDecimal LONGITUD_SUPERIOR = new BigDecimal("-86");
 	public static BigDecimal LONGITUD_INFERIOR = new BigDecimal("-118");
 	public static String RUTA_PARAMETROS_CONFIGURACION = "src/main/resources/parametrosConfiguracion.json";
+	public static String RESPUESTA_EXITOSA = "EXITOSO";
+	public static String RESPUESTA_FALLIDA = "FALLIDO";
 	
 }
 
