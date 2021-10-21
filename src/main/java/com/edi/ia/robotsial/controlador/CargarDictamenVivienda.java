@@ -40,9 +40,6 @@ public class CargarDictamenVivienda {
 	By listFiterAnio = By.cssSelector("select[class='ListFilter'][data-field='anio']");
 	
 	
-	
-	
-	
 	public void cargarDictamenVivienda(RobotSial robotSial, ExpedienteVO expedienteVO, String rutaArchivo) throws Exception {
 		
 		if(utilidad.georrefenciaSeEncuentraEnMexico(new BigDecimal(expedienteVO.getLatitud()), new BigDecimal(expedienteVO.getLongitud()))) {

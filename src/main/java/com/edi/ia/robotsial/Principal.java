@@ -1,19 +1,14 @@
 package com.edi.ia.robotsial;
 
-
 import java.util.ArrayList;
 
 import com.edi.ia.robotsial.controlador.ControladorRobotSial;
 import com.edi.ia.robotsial.modelo.ExpedienteVO;
-import com.edi.ia.robotsial.modelo.ExpedientesVO; 
+import com.edi.ia.robotsial.modelo.ExpedientesVO;
 
-
-public class RobotsialApplication {
+public class Principal {
 
 	public static void main(String[] args) {
-		
-		System.out.println("Prueba");
-		
 		ControladorRobotSial controladorRobotSial = new ControladorRobotSial();
 		try {
 			ExpedientesVO expedientesVO = new ExpedientesVO();
@@ -50,7 +45,7 @@ public class RobotsialApplication {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

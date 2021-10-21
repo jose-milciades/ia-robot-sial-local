@@ -1,8 +1,7 @@
 package com.edi.ia.robotsial.controlador;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 import org.openqa.selenium.chrome.ChromeDriver;
