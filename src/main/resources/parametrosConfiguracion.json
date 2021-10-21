@@ -1,0 +1,8 @@
+{
+"webDriver": "webdriver.chrome.driver",
+"pathWebDriver": "src/main/resources/chromedriver",
+"pathArchivo": "src/main/resources/tmp",
+"urlSial": "https://infonavit.lexaudit.com.mx/login#menu-procedimientos",
+"login": "sial@cardmin.com.mx",
+"password": "Cardmin.09"
+}
