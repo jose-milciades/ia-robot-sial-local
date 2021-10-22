@@ -214,7 +214,7 @@ public class RobotSial {
 		}
 	}
 	
-	public boolean elementoPresente(By componente, int intentosFallidos, int tiempoEspera) throws Exception {
+	public boolean elementoPresente(By componente, int intentosFallidos, int tiempoEspera)  {
 		boolean respuesta = false;
 		try {
 			Thread.sleep(tiempoEspera);
@@ -222,6 +222,9 @@ public class RobotSial {
 			respuesta = true;
 		} catch (NoSuchElementException e) {
 			respuesta = false;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return respuesta;
 	}
@@ -356,8 +359,8 @@ public class RobotSial {
 			driver.switchTo().alert();
 			Alert alert = driver.switchTo().alert();
 			String mensaje  = alert.getText();
-			alert.accept();
-//			alert.dismiss();
+//			alert.accept();
+			alert.dismiss();
 			if(!mensaje.contains("el dictamen con estatus final")) {
 				throw new Exception(mensaje);
 			}

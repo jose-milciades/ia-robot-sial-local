@@ -37,6 +37,7 @@ public class CargarDictamenVivienda {
 	By texAreaComentarios = By.cssSelector("textarea[name='comentarios']");
 	By saveButton = By.cssSelector("button[class='button-save btn btn-success pull-right']");
 	
+	By listDictamen = By.cssSelector("tr[class='list-row']");
 	By listFiterAnio = By.cssSelector("select[class='ListFilter'][data-field='anio']");
 	
 	
@@ -52,7 +53,7 @@ public class CargarDictamenVivienda {
 		
 		robotSial.click(tabDictamenVivienda, 0, VariablesGlobales.T1); 
 		
-		if(robotSial.elementoPresente(listFiterAnio, 0, VariablesGlobales.T3)) {
+		if(robotSial.elementoPresente(listDictamen, 0, VariablesGlobales.T3)) {
 			throw new Exception(VariablesGlobales.MENSAJE_ERROR_09);
 		}
 		
