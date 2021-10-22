@@ -355,9 +355,9 @@ public class RobotSial {
 
 			driver.switchTo().alert();
 			Alert alert = driver.switchTo().alert();
-			String mensaje  = alert.getText();
-			alert.accept();
-//			alert.dismiss();
+			String mensaje  = alert.getText();			
+//			alert.accept();
+			alert.dismiss();
 			if(!mensaje.contains("el dictamen con estatus final")) {
 				throw new Exception(mensaje);
 			}

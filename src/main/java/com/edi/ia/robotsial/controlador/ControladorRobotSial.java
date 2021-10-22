@@ -140,7 +140,7 @@ public class ControladorRobotSial  {
 				e.printStackTrace();
 				
 				respuesta.setCuentaSial(parametrosConfiguracionVO.getLogin());
-				respuesta.setMensajeError(VariablesGlobales.MENSAJE_ERROR_06 + e.getMessage());
+				respuesta.setMensajeError(replaceBreakPoints(VariablesGlobales.MENSAJE_ERROR_06 + e.getMessage()));
 				respuesta.setNumeroCredito(expedienteVO.getNumeroCredito());
 				respuesta.setResultado(VariablesGlobales.RESPUESTA_FALLIDA);
 				utilidad.agregarLineaResultado(respuesta.getRespuesta(), pathArchivoResultado);
@@ -160,6 +160,11 @@ public class ControladorRobotSial  {
 				throw e;
 			}
 		}
+	}
+
+	public String replaceBreakPoints(final String mensajeError) {
+		String cadenaComas = mensajeError.replaceAll(";", ",");
+		return cadenaComas.replaceAll("\n", " ");
 	}
 
 	public void salir(RobotSial robotSial, String rutaArchivo) throws IOException {
