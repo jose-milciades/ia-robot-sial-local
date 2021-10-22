@@ -69,7 +69,15 @@ public class ExpedienteVO {
 	private String latitud;
 	private String longitud;
 
-	
+	private String cargarDictamenAdicional;
+
+	public String getCargarDictamenAdicional() {
+		return cargarDictamenAdicional;
+	}
+
+	public void setCargarDictamenAdicional(final String cargarDictamenAdicional) {
+		this.cargarDictamenAdicional = cargarDictamenAdicional;
+	}
 
 	public String getPersonaContactada() {
 		return personaContactada;

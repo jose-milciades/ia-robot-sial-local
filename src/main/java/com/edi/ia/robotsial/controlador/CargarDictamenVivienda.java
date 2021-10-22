@@ -52,9 +52,11 @@ public class CargarDictamenVivienda {
 		robotSial.click(consultarJuicioButton, 0, VariablesGlobales.T3); 
 		
 		robotSial.click(tabDictamenVivienda, 0, VariablesGlobales.T1); 
-		
-		if(robotSial.elementoPresente(listDictamen, 0, VariablesGlobales.T3)) {
-			throw new Exception(VariablesGlobales.MENSAJE_ERROR_09);
+		// if bandera no
+		if (expedienteVO.getCargarDictamenAdicional().equals("NO")) {
+			if(robotSial.elementoPresente(listFiterAnio, 0, VariablesGlobales.T3)) {
+				throw new Exception(VariablesGlobales.MENSAJE_ERROR_09);
+			}
 		}
 		
 		robotSial.click(adicionarButton, 0, VariablesGlobales.T1);

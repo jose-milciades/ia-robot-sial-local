@@ -103,26 +103,27 @@ public ArrayList<ExpedienteVO> leerExpedientes(String ruta) throws Exception {
 		while (lineas.hasNext()) {
 			ExpedienteVO expedienteVO = new ExpedienteVO();
 			linea = lineas.next().toString().split(";");
-			expedienteVO.setNumeroCredito(linea[0]);
-			expedienteVO.setNombreArchivo(linea[1]);
-			expedienteVO.setUrlExpediente(linea[2]);
-				expedienteVO.setDomicilioLocalizado(linea[3]);
-				expedienteVO.setEstadoVivienda(linea[4]);
-				expedienteVO.setHabitada(linea[5]);
-				expedienteVO.setVentanas(linea[6]);
-				expedienteVO.setMuebles(linea[7]);
-				expedienteVO.setMedidor_de_luz(linea[8]);
-				expedienteVO.setMedidor_de_agua(linea[9]);
-				expedienteVO.setAutos(linea[10]);
+			expedienteVO.setCargarDictamenAdicional(linea[0]);
+			expedienteVO.setNumeroCredito(linea[1]);
+			expedienteVO.setNombreArchivo(linea[2]);
+			expedienteVO.setUrlExpediente(linea[3]);
+				expedienteVO.setDomicilioLocalizado(linea[4]);
+				expedienteVO.setEstadoVivienda(linea[5]);
+				expedienteVO.setHabitada(linea[6]);
+				expedienteVO.setVentanas(linea[7]);
+				expedienteVO.setMuebles(linea[8]);
+				expedienteVO.setMedidor_de_luz(linea[9]);
+				expedienteVO.setMedidor_de_agua(linea[10]);
+				expedienteVO.setAutos(linea[11]);
 
-				expedienteVO.setPersonaContactada(linea[11]);
-				expedienteVO.setMotivoNoPago(linea[12]);
-				expedienteVO.setQuiereMantenerHogar(linea[13]);
-				expedienteVO.setCapacidadDePago(linea[14]);
+				expedienteVO.setPersonaContactada(linea[12]);
+				expedienteVO.setMotivoNoPago(linea[13]);
+				expedienteVO.setQuiereMantenerHogar(linea[14]);
+				expedienteVO.setCapacidadDePago(linea[15]);
 
-				expedienteVO.setComentario(linea[15]);
-				expedienteVO.setLatitud(linea[16].replace(",", "."));
-				expedienteVO.setLongitud(linea[17].replace(",", "."));
+				expedienteVO.setComentario(linea[16]);
+				expedienteVO.setLatitud(linea[17].replace(",", "."));
+				expedienteVO.setLongitud(linea[18].replace(",", "."));
 				
 				listExpedienteVO.add(expedienteVO);
 		}
