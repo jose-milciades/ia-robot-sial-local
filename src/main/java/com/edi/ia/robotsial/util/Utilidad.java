@@ -1,8 +1,8 @@
 package com.edi.ia.robotsial.util;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
+import javax.imageio.ImageIO;
+
 import com.edi.ia.robotsial.modelo.ExpedienteVO;
 import com.edi.ia.robotsial.modelo.ExpedientesVO;
 import com.edi.ia.robotsial.modelo.ParametrosConfiguracionVO;
@@ -26,12 +28,23 @@ import com.google.gson.JsonSyntaxException;
 
 public class Utilidad {
 
-	public String descargarArchivo(String origenURL, String rutaDirectorio, String nombreArchivo) throws IOException {
+	
+	public String descargarArchivo(String origenURL, String rutaDirectorio, String nombreArchivo, String tipoCarga) throws IOException {
 		URL url = new URL(origenURL);
 		Path path = new File(rutaDirectorio + File.separator + nombreArchivo).toPath();
 		Files.copy(url.openStream(), path, StandardCopyOption.REPLACE_EXISTING);
 		File file = new File(rutaDirectorio + nombreArchivo);
+		if (tipoCarga.equals(VariablesGlobales.TIPO_CARGA_DICTAMEN_VIVIENDA)) {
+			BufferedImage bufferedImage = ImageIO.read(file);
+			BufferedImage bufferedImageCropped = cropImage(bufferedImage, 0, 0, bufferedImage.getWidth(), (int) (bufferedImage.getHeight()*(0.9)));
+			ImageIO.write(bufferedImageCropped, "jpeg", file);
+		}
 		return file.getAbsolutePath();
+	}
+	
+	private static BufferedImage cropImage(BufferedImage bufferedImage, int x, int y, int width, int height){
+	    BufferedImage croppedImage = bufferedImage.getSubimage(x, y, width, height);
+	    return croppedImage;
 	}
 
 	public void borrarDirectorio(String ruta) throws IOException {
@@ -93,7 +106,7 @@ public ArrayList<ExpedienteVO> leerExpedientes(String ruta) throws Exception {
 	ArrayList<ExpedienteVO> listExpedienteVO = new ArrayList<ExpedienteVO>();
 	
 	
-	try (Stream<String> stream = Files.lines(Paths.get(ruta))) {
+	try (Stream<String> stream = Files.lines(Paths.get(ruta), Charset.forName("ISO-8859-1"))) {
 		Iterator<String> lineas = stream.iterator();
 		String linea[];
 		

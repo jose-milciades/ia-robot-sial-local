@@ -41,7 +41,7 @@ public class ControladorRobotSial  {
 			robotSial.opcionCargarRecibo();
 			for (ReciboVO reciboVO : recibosVO.getRecibosVO()) {
 				utilidad.descargarArchivo(reciboVO.getOrigenURL(), parametrosConfiguracionVO.pathArchivo,
-						reciboVO.getNombreArchivo());
+						reciboVO.getNombreArchivo(), null);
 				robotSial.cargarRecibo(reciboVO, 1);
 				robotSial.filtrarRecibos(reciboVO);
 			}
@@ -76,7 +76,7 @@ public class ControladorRobotSial  {
 				try {
 
 					rutaArchivo = utilidad.descargarArchivo(expedienteVO.getUrlExpediente(),
-							parametrosConfiguracionVO.pathArchivo, expedienteVO.getNombreArchivo());
+							parametrosConfiguracionVO.pathArchivo, expedienteVO.getNombreArchivo(), expedientesVO.getTipoCarga());
 					
 					if(utilidad.isEmpty(expedientesVO.getTipoCarga())) {
 						RobotSialCargarExpediente robotSialCargarExpediente = new RobotSialCargarExpediente();
@@ -112,7 +112,7 @@ public class ControladorRobotSial  {
 					utilidad.borrarDirectorio(rutaArchivo);
 					
 					respuesta.setCuentaSial(parametrosConfiguracionVO.getLogin());
-					respuesta.setMensajeError(VariablesGlobales.MENSAJE_ERROR_07 + e.getMessage());
+					respuesta.setMensajeError(replaceBreakPoints(VariablesGlobales.MENSAJE_ERROR_07 + e.getMessage()));
 					respuesta.setNumeroCredito(expedienteVO.getNumeroCredito());
 					respuesta.setResultado(VariablesGlobales.RESPUESTA_FALLIDA);
 					utilidad.agregarLineaResultado(respuesta.getRespuesta(), pathArchivoResultado);
@@ -125,7 +125,7 @@ public class ControladorRobotSial  {
 					utilidad.borrarDirectorio(rutaArchivo);
 					
 					respuesta.setCuentaSial(parametrosConfiguracionVO.getLogin());
-					respuesta.setMensajeError(e.getMessage());
+					respuesta.setMensajeError(replaceBreakPoints(e.getMessage()));
 					respuesta.setNumeroCredito(expedienteVO.getNumeroCredito());
 					respuesta.setResultado(VariablesGlobales.RESPUESTA_FALLIDA);
 					utilidad.agregarLineaResultado(respuesta.getRespuesta(), pathArchivoResultado);
