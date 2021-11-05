@@ -59,6 +59,8 @@ public class ExpedienteVO {
 	private String medidor_de_luz;
 	private String medidor_de_agua;
 	private String autos;
+	private String vandalizada;
+	private String invasores;
 	
 	private String personaContactada;
 	private String motivoNoPago;
@@ -70,6 +72,22 @@ public class ExpedienteVO {
 	private String longitud;
 
 	private String cargarDictamenAdicional;
+
+	public String getVandalizada() {
+		return vandalizada;
+	}
+
+	public void setVandalizada(final String vandalizada) {
+		this.vandalizada = vandalizada;
+	}
+
+	public String getInvasores() {
+		return invasores;
+	}
+
+	public void setInvasores(final String invasores) {
+		this.invasores = invasores;
+	}
 
 	public String getCargarDictamenAdicional() {
 		return cargarDictamenAdicional;

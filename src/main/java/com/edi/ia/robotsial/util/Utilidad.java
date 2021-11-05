@@ -123,20 +123,22 @@ public ArrayList<ExpedienteVO> leerExpedientes(String ruta) throws Exception {
 				expedienteVO.setDomicilioLocalizado(linea[4]);
 				expedienteVO.setEstadoVivienda(linea[5]);
 				expedienteVO.setHabitada(linea[6]);
-				expedienteVO.setVentanas(linea[7]);
-				expedienteVO.setMuebles(linea[8]);
-				expedienteVO.setMedidor_de_luz(linea[9]);
-				expedienteVO.setMedidor_de_agua(linea[10]);
-				expedienteVO.setAutos(linea[11]);
+				expedienteVO.setVandalizada(linea[7]);
+				expedienteVO.setInvasores(linea[8]);
+				expedienteVO.setVentanas(linea[9]);
+				expedienteVO.setMuebles(linea[10]);
+				expedienteVO.setMedidor_de_luz(linea[11]);
+				expedienteVO.setMedidor_de_agua(linea[12]);
+				expedienteVO.setAutos(linea[13]);
 
-				expedienteVO.setPersonaContactada(linea[12]);
-				expedienteVO.setMotivoNoPago(linea[13]);
-				expedienteVO.setQuiereMantenerHogar(linea[14]);
-				expedienteVO.setCapacidadDePago(linea[15]);
+				expedienteVO.setPersonaContactada(linea[14]);
+				expedienteVO.setMotivoNoPago(linea[15]);
+				expedienteVO.setQuiereMantenerHogar(linea[16]);
+				expedienteVO.setCapacidadDePago(linea[17]);
 
-				expedienteVO.setComentario(linea[16]);
-				expedienteVO.setLatitud(linea[17].replace(",", "."));
-				expedienteVO.setLongitud(linea[18].replace(",", "."));
+				expedienteVO.setComentario(linea[18]);
+				expedienteVO.setLatitud(linea[19].replace(",", "."));
+				expedienteVO.setLongitud(linea[20].replace(",", "."));
 				
 				listExpedienteVO.add(expedienteVO);
 		}

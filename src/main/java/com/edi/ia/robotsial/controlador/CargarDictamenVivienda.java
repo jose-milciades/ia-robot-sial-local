@@ -23,6 +23,8 @@ public class CargarDictamenVivienda {
 	By dropdownListEstado = By.cssSelector("select[name='estado'][class='form-control FieldOptions']");
 
 	By checkBoxHabitada = By.cssSelector("label[class='habitada']");
+	By checkBoxVandalizada = By.cssSelector("label[class='vandalizada']");
+	By checkBoxInvasores = By.cssSelector("label[class='invasores']");	
 	By checkBoxVentanas = By.cssSelector("label[class='ventanas']");
 	By checkBoxMuebles = By.cssSelector("label[class='muebles']");
 	By checkBoxMedidor_de_luz = By.cssSelector("label[class='medidor_de_luz']");
@@ -68,6 +70,8 @@ public class CargarDictamenVivienda {
 		
 		
 		robotSial.click(checkBoxHabitada,expedienteVO.getHabitada(), 0, VariablesGlobales.T1);
+		robotSial.click(checkBoxVandalizada,expedienteVO.getVandalizada(), 0, VariablesGlobales.T1);
+		robotSial.click(checkBoxInvasores,expedienteVO.getInvasores(), 0, VariablesGlobales.T1);
 		robotSial.click(checkBoxVentanas,expedienteVO.getVentanas(), 0, VariablesGlobales.T1);
 		robotSial.click(checkBoxMuebles,expedienteVO.getMuebles(), 0, VariablesGlobales.T1);
 		robotSial.click(checkBoxMedidor_de_luz,expedienteVO.getMedidor_de_luz(), 0, VariablesGlobales.T1);
