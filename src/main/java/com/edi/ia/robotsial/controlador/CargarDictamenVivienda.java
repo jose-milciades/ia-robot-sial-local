@@ -19,8 +19,10 @@ public class CargarDictamenVivienda {
 	By tabDictamenVivienda = By.xpath("/html/body/div[1]/div[3]/div/div/div[2]/section[1]/div/div[1]/div[3]/div[2]");
 	By adicionarButton = By.cssSelector("button[class='button-add btn btn-primary']");
 	By dropdownListDomicilioLocalizado = By.cssSelector("select[name='domicilio_localizado']");
+	By dropdownListMotivoNoLocalizado = By.cssSelector("select[name='motivo_no_localizado']");
 	By seleccionarImagen = By.cssSelector("input[class='form-control FieldPicture']");
 	By dropdownListEstado = By.cssSelector("select[name='estado'][class='form-control FieldOptions']");
+	By dropdownListInvadidaPor = By.cssSelector("select[name='invadida_por'][class='form-control FieldReference']");
 
 	By checkBoxHabitada = By.cssSelector("label[class='habitada']");
 	By checkBoxVandalizada = By.cssSelector("label[class='vandalizada']");
@@ -45,9 +47,14 @@ public class CargarDictamenVivienda {
 	
 	public void cargarDictamenVivienda(RobotSial robotSial, ExpedienteVO expedienteVO, String rutaArchivo) throws Exception {
 		
-		if(utilidad.georrefenciaSeEncuentraEnMexico(new BigDecimal(expedienteVO.getLatitud()), new BigDecimal(expedienteVO.getLongitud()))) {
+		if (!expedienteVO.getLatitud().equals("") && !expedienteVO.getLongitud().equals("")) {
+			if(utilidad.georrefenciaSeEncuentraEnMexico(new BigDecimal(expedienteVO.getLatitud()), new BigDecimal(expedienteVO.getLongitud()))) {		
+				robotSial.setGeolocalización(new BigDecimal(expedienteVO.getLatitud()), new BigDecimal(expedienteVO.getLongitud()), new BigDecimal("10"));
+			} else {
+				throw new Exception(VariablesGlobales.MENSAJE_ERROR_08);
+			}
+		}
 		
-		robotSial.setGeolocalización(new BigDecimal(expedienteVO.getLatitud()), new BigDecimal(expedienteVO.getLongitud()), new BigDecimal("10"));
 		robotSial.click(menuItemBuscar, 0, VariablesGlobales.T3);
 		robotSial.sendKeys(imputBuscar, expedienteVO.getNumeroCredito(), 0, VariablesGlobales.T1);
 		robotSial.click(listResultado, 0, VariablesGlobales.T3);
@@ -63,7 +70,9 @@ public class CargarDictamenVivienda {
 		
 		robotSial.click(adicionarButton, 0, VariablesGlobales.T1);
 		robotSial.selectDropdownList(dropdownListDomicilioLocalizado, expedienteVO.getDomicilioLocalizado(), 0,
-				VariablesGlobales.T2);
+				VariablesGlobales.T3);
+		robotSial.selectDropdownList(dropdownListMotivoNoLocalizado, expedienteVO.getMotivoNoLocalizado(), 0,
+				VariablesGlobales.T3);
 		robotSial.sendKeys(seleccionarImagen, rutaArchivo, 0, VariablesGlobales.T3);
 		robotSial.selectDropdownList(dropdownListEstado, expedienteVO.getEstadoVivienda(), 0,
 				VariablesGlobales.T2);
@@ -72,6 +81,7 @@ public class CargarDictamenVivienda {
 		robotSial.click(checkBoxHabitada,expedienteVO.getHabitada(), 0, VariablesGlobales.T1);
 		robotSial.click(checkBoxVandalizada,expedienteVO.getVandalizada(), 0, VariablesGlobales.T1);
 		robotSial.click(checkBoxInvasores,expedienteVO.getInvasores(), 0, VariablesGlobales.T1);
+		robotSial.selectDropdownList(dropdownListInvadidaPor,expedienteVO.getInvadidaPor() , 0, VariablesGlobales.T1);
 		robotSial.click(checkBoxVentanas,expedienteVO.getVentanas(), 0, VariablesGlobales.T1);
 		robotSial.click(checkBoxMuebles,expedienteVO.getMuebles(), 0, VariablesGlobales.T1);
 		robotSial.click(checkBoxMedidor_de_luz,expedienteVO.getMedidor_de_luz(), 0, VariablesGlobales.T1);
@@ -93,14 +103,6 @@ public class CargarDictamenVivienda {
 		
 		//Evento al final para darle tiempo al nevegador de guardar
 		robotSial.click(listFiterAnio, 0, VariablesGlobales.T3); 
-		
-		
-		}
-		
-		else {
-			throw new Exception(VariablesGlobales.MENSAJE_ERROR_08);
-		}
-		
 		
 	}
 	

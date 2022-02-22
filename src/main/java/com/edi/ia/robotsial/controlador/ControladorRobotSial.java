@@ -74,9 +74,10 @@ public class ControladorRobotSial  {
 			robotSial.autenticarse();
 			for (ExpedienteVO expedienteVO : expedientesVO.getExpedientes()) {
 				try {
-
-					rutaArchivo = utilidad.descargarArchivo(expedienteVO.getUrlExpediente(),
-							parametrosConfiguracionVO.pathArchivo, expedienteVO.getNombreArchivo(), expedientesVO.getTipoCarga());
+					if (!expedienteVO.getUrlExpediente().equals("")) {
+						rutaArchivo = utilidad.descargarArchivo(expedienteVO.getUrlExpediente(),
+								parametrosConfiguracionVO.pathArchivo, expedienteVO.getNombreArchivo(), expedientesVO.getTipoCarga());
+					}
 					
 					if(utilidad.isEmpty(expedientesVO.getTipoCarga())) {
 						RobotSialCargarExpediente robotSialCargarExpediente = new RobotSialCargarExpediente();
@@ -163,6 +164,7 @@ public class ControladorRobotSial  {
 	}
 
 	public String replaceBreakPoints(final String mensajeError) {
+//		if (mensajeError != null)
 		String cadenaComas = mensajeError.replaceAll(";", ",");
 		return cadenaComas.replaceAll("\n", " ");
 	}

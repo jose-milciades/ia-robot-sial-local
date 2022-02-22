@@ -52,6 +52,7 @@ public class ExpedienteVO {
 	
 	
 	private String domicilioLocalizado;
+	private String motivoNoLocalizado;
 	private String estadoVivienda;
 	private String habitada;
 	private String ventanas;
@@ -72,6 +73,15 @@ public class ExpedienteVO {
 	private String longitud;
 
 	private String cargarDictamenAdicional;
+	private String invadidaPor;
+
+	public String getInvadidaPor() {
+		return invadidaPor;
+	}
+
+	public void setInvadidaPor(String invadidaPor) {
+		this.invadidaPor = invadidaPor;
+	}
 
 	public String getVandalizada() {
 		return vandalizada;
@@ -570,5 +580,13 @@ public class ExpedienteVO {
 
 	public void setNumeroCredito(String numeroCredito) {
 		this.numeroCredito = numeroCredito;
+	}
+
+	public String getMotivoNoLocalizado() {
+		return motivoNoLocalizado;
+	}
+
+	public void setMotivoNoLocalizado(String motivoNoLocalizado) {
+		this.motivoNoLocalizado = motivoNoLocalizado;
 	}
 }

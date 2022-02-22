@@ -19,7 +19,6 @@ import java.util.stream.Stream;
 import javax.imageio.ImageIO;
 
 import com.edi.ia.robotsial.modelo.ExpedienteVO;
-import com.edi.ia.robotsial.modelo.ExpedientesVO;
 import com.edi.ia.robotsial.modelo.ParametrosConfiguracionVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -121,24 +120,26 @@ public ArrayList<ExpedienteVO> leerExpedientes(String ruta) throws Exception {
 			expedienteVO.setNombreArchivo(linea[2]);
 			expedienteVO.setUrlExpediente(linea[3]);
 				expedienteVO.setDomicilioLocalizado(linea[4]);
-				expedienteVO.setEstadoVivienda(linea[5]);
-				expedienteVO.setHabitada(linea[6]);
-				expedienteVO.setVandalizada(linea[7]);
-				expedienteVO.setInvasores(linea[8]);
-				expedienteVO.setVentanas(linea[9]);
-				expedienteVO.setMuebles(linea[10]);
-				expedienteVO.setMedidor_de_luz(linea[11]);
-				expedienteVO.setMedidor_de_agua(linea[12]);
-				expedienteVO.setAutos(linea[13]);
+				expedienteVO.setMotivoNoLocalizado(linea[5]);
+				expedienteVO.setEstadoVivienda(linea[6]);
+				expedienteVO.setHabitada(linea[7]);
+				expedienteVO.setVandalizada(linea[8]);
+				expedienteVO.setInvasores(linea[9]);
+				expedienteVO.setInvadidaPor(linea[10]);
+				expedienteVO.setVentanas(linea[11]);
+				expedienteVO.setMuebles(linea[12]);
+				expedienteVO.setMedidor_de_luz(linea[13]);
+				expedienteVO.setMedidor_de_agua(linea[14]);
+				expedienteVO.setAutos(linea[15]);
 
-				expedienteVO.setPersonaContactada(linea[14]);
-				expedienteVO.setMotivoNoPago(linea[15]);
-				expedienteVO.setQuiereMantenerHogar(linea[16]);
-				expedienteVO.setCapacidadDePago(linea[17]);
+				expedienteVO.setPersonaContactada(linea[16]);
+				expedienteVO.setMotivoNoPago(linea[17]);
+				expedienteVO.setQuiereMantenerHogar(linea[18]);
+				expedienteVO.setCapacidadDePago(linea[19]);
 
-				expedienteVO.setComentario(linea[18]);
-				expedienteVO.setLatitud(linea[19].replace(",", "."));
-				expedienteVO.setLongitud(linea[20].replace(",", "."));
+				expedienteVO.setComentario(linea[20]);
+				expedienteVO.setLatitud(linea[21].replace(",", "."));
+				expedienteVO.setLongitud(linea[22].replace(",", "."));
 				
 				listExpedienteVO.add(expedienteVO);
 		}
